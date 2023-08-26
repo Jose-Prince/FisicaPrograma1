@@ -71,8 +71,6 @@ def cono(radio, altura, t):#t es tortuga
 
 def cono(radio2,radio1,altura, t): #radio 2 es grande y radio 1 es peque
     
-    
-    
     t.penup()
     t.forward(radio2)
     t.left(90)
@@ -101,6 +99,13 @@ def cono(radio2,radio1,altura, t): #radio 2 es grande y radio 1 es peque
     t.goto(positiond1)
     t.pendown()
     t.goto(positiond2)
+
+def hemisferio(radio, t):
+    t.circle(radio)
+
+
+def dot(size,t):
+    t.dot(size, color="red")
  
 
     
