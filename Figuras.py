@@ -9,9 +9,6 @@ t = turtle.Turtle()
 #     t.left(120)     # Turn 120 degrees to form an equilateral triangle
 
 def cono(radio2,radio1,altura): #radio 2 es grande y radio 1 es peque
-    
-    
-    
     t.penup()
     t.forward(radio2)
     t.left(90)
@@ -36,23 +33,9 @@ def cono(radio2,radio1,altura): #radio 2 es grande y radio 1 es peque
     t.goto(positiond)
     t.penup()
     t.goto(position2)
-    
     t.goto(positiond1)
     t.pendown()
     t.goto(positiond2)
- 
-
-    
-
-
-    
-        
-
-
-
-  
-
-
 
 
 

@@ -15,12 +15,12 @@ def draw_grid(step, size):
         turtle.goto(size, i)
 
 
-def mainpos(tortuga):
+def mainpos(tortuga,screensize):
     tortuga.penup()
     tortuga.goto(-screensize,0)
     tortuga.pendown()
 
-def xbar(tortuga):
+def xbar(tortuga,screensize):
     tortuga.penup()
     tortuga.goto(-screensize,0)
     tortuga.pendown()
@@ -29,7 +29,7 @@ def xbar(tortuga):
     tortuga.write("x+")
     tortuga.goto(-screensize,0)
 
-def ybar(tortuga):
+def ybar(tortuga,screensize):
     tortuga.penup()
     tortuga.goto(-screensize,0)
     tortuga.pendown()
@@ -69,8 +69,7 @@ def cono(radio, altura, t):#t es tortuga
         turtle.shape("square")
 
 
-def cono(radio2,radio1,altura, t): #radio 2 es grande y radio 1 es peque
-    
+def conoTruncado(radio2,radio1,altura, t): #radio 2 es grande y radio 1 es peque
     t.penup()
     t.forward(radio2)
     t.left(90)
@@ -106,55 +105,38 @@ def hemisferio(radio, t):
 
 def dot(size,t):
     t.dot(size, color="red")
- 
-
-    
 
 
-    
-        
+def pantalla():
+    # Set up the screen
+    turtle.tracer(False)
+    turtle.update()
+    turtle.color("#D3D3D3")
+    screensize = 300
+    actualscreen = 800 #resolucion de la pantalla
 
+    draw_grid(step=10, size = actualscreen)
 
+    # Hide the turtle and display the result
 
-    
-        
+    # decision = input("Desea continuar")
+    #Punto de reflexion
 
+    #Tortuga para dibujar
 
+    turtle.tracer(True)
+    turtle.update()
 
+    tortugagrid = turtle.Turtle()
+    tortugagrid.shape("arrow")
+    tortugagrid.color("blue")
+    tortugagrid.shapesize(0.25,0.5,0.5)
+    tortugagrid.speed(0)
+    mainpos(tortugagrid,screensize)
+    xbar(tortugagrid,screensize)
+    ybar(tortugagrid,screensize)
 
-
-
-
-
-# Set up the screen
-turtle.tracer(False)
-turtle.update()
-turtle.color("#D3D3D3")
-screensize = 300
-actualscreen = 800 #resolucion de la pantalla
-
-draw_grid(step=10, size = actualscreen)
-
-# Hide the turtle and display the result
-
-decision = input("Desea continuar")
-#Punto de reflexion
-
-#Tortuga para dibujar
-
-turtle.tracer(True)
-turtle.update()
-
-tortugagrid = turtle.Turtle()
-tortugagrid.shape("arrow")
-tortugagrid.color("blue")
-tortugagrid.shapesize(0.25,0.5,0.5)
-tortugagrid.speed(0)
-mainpos(tortugagrid)
-xbar(tortugagrid)
-ybar(tortugagrid)
-
-figuras = turtle.Turtle()
-
-
-decision = input("Desea continuar")
+# figuras = turtle.Turtle()
+# 
+# 
+# decision = input("Desea continuar")
