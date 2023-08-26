@@ -8,7 +8,32 @@ t = turtle.Turtle()
 #     t.forward(100)  # Length of each side
 #     t.left(120)     # Turn 120 degrees to form an equilateral triangle
 
-def cono(radio2,radio1,altura): #radio 2 es grande y radio 1 es peque
+def cono(radio, altura, t):#t es tortuga
+    t.left(90)
+    hipotenusa = math.hypot(radio,altura)
+    angulo = math.atan(radio/altura)
+    angulo = math.degrees(angulo)
+    t.left(angulo)    
+    print(angulo)
+    t.forward(hipotenusa) 
+    t.right(90-angulo)
+    t.setheading(90)
+    t.penup()
+    t.backward(altura)
+    t.left(90)
+    t.forward(radio)
+    t.right(90+angulo)
+    t.forward(hipotenusa)
+    t.pendown()
+    t.backward(hipotenusa)
+    t.setheading(0)
+    t.right(20)
+    t.circle(radio*3,40)
+    if(radio >= 100):
+        turtle.shape("square")
+
+
+def conoTruncado(radio2,radio1,altura, t): #radio 2 es grande y radio 1 es peque
     t.penup()
     t.forward(radio2)
     t.left(90)
@@ -33,11 +58,10 @@ def cono(radio2,radio1,altura): #radio 2 es grande y radio 1 es peque
     t.goto(positiond)
     t.penup()
     t.goto(position2)
+    
     t.goto(positiond1)
     t.pendown()
     t.goto(positiond2)
 
-
-
-cono(50,40,60)
-input("continuar")
+def hemisferio(radio, t):
+    t.circle(radio)

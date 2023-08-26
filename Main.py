@@ -43,6 +43,7 @@ while ejecucion:
     Opcion = input("Opción: ")
     
     if Opcion == "1":
+        
         pr.pantalla()
         
     if Opcion == "2":
