@@ -1,8 +1,6 @@
-import turtle
+from turtle import *
 import tkinter as tk
 import math
-
-t = turtle.Turtle()
 
 # for _ in range(3):
 #     t.forward(100)  # Length of each side
@@ -64,4 +62,25 @@ def conoTruncado(radio2,radio1,altura, t): #radio 2 es grande y radio 1 es peque
     t.goto(positiond2)
 
 def hemisferio(radio, t):
-    t.circle(radio)
+    t.penup()
+    t.goto(-300,-radio)
+    t.pendown()
+    t.circle(radio,180)
+    t.penup()
+    t.goto(-300,-radio)
+    t.pendown()
+    ovalo(radio,t)
+        
+def ovalo(radio,t):
+    t.setheading(0)
+    t.left(45)
+    t.circle(radio*1.43,90)
+    t.left(90)
+    t.circle(radio*1.43,90)
+    orPos(t)
+    
+def orPos(t):
+    t.penup()
+    t.goto(-300,0)
+    
+    

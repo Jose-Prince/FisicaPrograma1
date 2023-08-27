@@ -15,9 +15,12 @@
 import turtle
 import tkinter as tk
 import pruebas as pr
+import Figuras as fig
+
+tortugita = turtle.Turtle()
 
 def do_stuff():
-    my_lovely_turtle.goto(-600,-600)
+    tortugita.goto(-600,-600)
 
 
 def press():
@@ -37,20 +40,26 @@ def press():
 ejecucion = True
 figura = print("¿Qué figura desea usar?\n\n1: Cono\n2: Tronco de cono\n3: Hemisferio\n")
 
-
-
 while ejecucion:
     Opcion = input("Opción: ")
     
     if Opcion == "1":
-        
+        radio = input("Radio: ")
+        altura = input("Altura: ")
         pr.pantalla()
+        fig.cono(int(radio),int(altura),tortugita)
         
     if Opcion == "2":
+        radioG = input("Radio Mayor: ")
+        radioP = input("Radio Menor: ")
+        altura = input("Altura: ")
         pr.pantalla()
+        fig.conoTruncado(int(radioG),int(radioP),int(altura),tortugita)
     
     if Opcion == "3":
+        radio = input("Radio: ")
         pr.pantalla()
+        fig.hemisferio(int(radio),tortugita)
     
     
 
