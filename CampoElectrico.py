@@ -1,10 +1,18 @@
 import math
 
-def Ccono():
-    pass
+def Ccono(Q,R,H,d): #Q = carga, R = radio, H = altura, d = distancia de la figura a la partícula
+    constante = (3*Q)/(2*math.pi*(8.85*10**-12)*R**2*H)
+    frac1 = (H*(H**2*d**2)**1/2+R**2*H+H**3)/(R**2+H**2)
+    frac12 = -(H*(H**2*(-d-H)**2+R*H**2)**1/2)/(R**2+H**2)
+    frac2 = -(H*R**2*d*math.log(abs((R**2+H**2)**1/2*((R**2+H**2)*H**2-2*H**2*H**2*(H*(d+H)+R**2)+H**2*d**2+2*H**3*d+H**2*R**2+H**4)**1/2)+(R**2+H**2)*H-H**2*d-H*R**2-H**3))/(R**2+H**2)**3/2
+    frac22 = (H*R**2*d*math.log(abs((R**2+H**2)**1/2*(H**2*d**2+2*H**3*d+H**2*R**2+H**4)**1/2-H**2*d-H*R**2-H**3)))/(R**2+H**2)**3/2
+    
+    resultado = constante*(frac1+frac2+frac12+frac22)
+    
+    return resultado
 
-def CconoT():
-    pass
+def CconoT(Q,R,r,H,d): #Q = carga, R = radio mayor, r = radio menor H = altura, d = distancia de la figura a la partícula
+    constante = (3*Q)/(2*math.pi*(8.85*10**-12)*H*(R**2+r**2+R*r))
 
 def Chemisferio(Q,R,d): #Q = carga, R = radio, d = distancia de la figura a la partícula
     constante = (3*Q)/(4*math.pi*(8.85*10**-12)*R**3)
@@ -12,3 +20,5 @@ def Chemisferio(Q,R,d): #Q = carga, R = radio, d = distancia de la figura a la p
     frac2 = (d*math.log(abs(2**1/2*(d**2+2*R*d+2*R**2)**1/2-d-2*R)))/(2**3/2)+((-d-R)**2+R**2)**1/2/(2)
     
     resultado = constante*(frac1+frac2)
+    
+    return resultado
