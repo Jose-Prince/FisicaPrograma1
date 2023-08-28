@@ -1,7 +1,8 @@
 import turtle
+from turtle import RawTurtle, ScrolledCanvas
 import tkinter as tk
 
-def draw_grid(step, size):
+def draw_grid(step, size,turtle):
     for i in range(-size, (size+1), step):
         turtle.penup()
         turtle.goto(i, -size)
@@ -41,25 +42,20 @@ def ybar(tortuga,screensize):
     tortuga.goto(-screensize,0)
 
 def dot(size,t):
-    t.dot(size, color="red")
+    t.color("red")
+    t.dot(size)
 
 
 def pantalla():
     # Set up the screen
+    turtle.Turtle()
     turtle.tracer(False)
     turtle.update()
     turtle.color("#D3D3D3")
     screensize = 300
     actualscreen = 800 #resolucion de la pantalla
 
-    draw_grid(step=10, size = actualscreen)
-
-    # Hide the turtle and display the result
-
-    # decision = input("Desea continuar")
-    #Punto de reflexion
-
-    #Tortuga para dibujar
+    draw_grid(step=10, size = actualscreen, turtle=turtle), 
 
     turtle.tracer(True)
     turtle.update()
@@ -72,8 +68,3 @@ def pantalla():
     mainpos(tortugagrid,screensize)
     xbar(tortugagrid,screensize)
     ybar(tortugagrid,screensize)
-
-# figuras = turtle.Turtle()
-# 
-# 
-# decision = input("Desea continuar")

@@ -26,6 +26,16 @@ def do_stuff():
 
 def press():
     do_stuff()
+
+
+def fxn(x, y):
+  turtle.penup()
+  turtle.goto(x, 0)
+  turtle.color("blue")
+  turtle.write("        "+str(300+x)+","+str(0))
+  positionx.append(str(-x))
+  positiony.append(str(0))
+  pr.dot(20,turtle)
     
 # root = tk.Tk()
 # canvas = tk.Canvas(root)
@@ -39,9 +49,13 @@ def press():
 # root.mainloop()
 
 ejecucion = True
-figura = print("¿Qué figura desea usar?\n\n1: Cono\n2: Tronco de cono\n3: Hemisferio\n")
+
+positionx = []
+positiony = []
+
 
 while ejecucion:
+    figura = print("¿Qué figura desea usar?\n\n1: Cono\n2: Tronco de cono\n3: Hemisferio\n4: Mostrar todas las cordenadas de la carga")
     Opcion = input("Opción: ")
     
     if Opcion == "1":
@@ -61,6 +75,19 @@ while ejecucion:
         radio = input("Radio: ")
         pr.pantalla()
         fig.hemisferio(int(radio),tortugita)
+
+        print("Vamos a poner la carga por favor seleccionar la posicion de la carga")
+        wn = turtle.Turtle()
+        wn = turtle.Screen()
+        wn.onclick(fxn)
+        carga = int(input("Por favor ingresar la carga: **Tomar en Cuenta que ya esta en µ**"))
+        Celectrico = campo.Chemisferio(int(carga), int(radio),  float(positionx[0]))
+        wn.forward(100)
+    
+    
+
+
+
     
     
 
