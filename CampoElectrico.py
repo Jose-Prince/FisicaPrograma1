@@ -14,14 +14,14 @@ def Ccono(Q,R,H,d): #Q = carga, R = radio, H = altura, d = distancia de la figur
 def CconoT(Q,R,r,H,d): #Q = carga, R = radio mayor, r = radio menor H = altura, d = distancia de la figura a la partícula
     constante = (3*Q)/(2*math.pi*(8.85*10**-12)*H*(R**2+r**2+R*r))
     aux1 = H*((r-R)**2+H**2)**1/2*(-(2*H*R*(r-H)-2*H**2*(d+H))/(2*(r**2-2*R*r+R**2+H**2))-d-H)
-    deno = ((r-R)**2+H**2)*(-(H**2*(R*(r-R)+H*(-d-H))**2)/((r-R)**2+H**2)+H**2(d+H)**2+H**2*R**2)
+    deno = ((r-R)**2+H**2)*(-(H**2*(R*(r-R)+H*(-d-H))**2)/((r-R)**2+H**2)+H**2*(d+H)**2+H**2*R**2)
     num1 = ((r-R)**2+H**2)*H+H*R*r-H**2*d-H*R**2-H**3
     num2 = H*R*r-H**2*d-H*R**2-H**3
     
     frac1 = math.log(abs(((num1)/(deno)+1)**1/2+(num1)/deno))
     frac12 = math.log(abs(((num2)/(deno)+1)**1/2+(num2)/deno))
     
-    frac2 = (h*(((r-R)H+H*R)**2+H**2*d**2)**1/2)/(r**2-2*R*r+R**2+H**2) + H
+    frac2 = (h*(((r-R)*H+H*R)**2+H**2*d**2)**1/2)/(r**2-2*R*r+R**2+H**2) + H
     frac22 = -(H*(H**2*R**2+H**2*(-d-H)**2)**1/2)/(r**2-2*R*r+R**2+H**2)
     
     fract1 = (aux1*frac1)/(r**2-2*R*r+R**2+H**2)
