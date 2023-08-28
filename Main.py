@@ -16,6 +16,7 @@ import turtle
 import tkinter as tk
 import pruebas as pr
 import Figuras as fig
+import CampoElectrico as campo
 
 tortugita = turtle.Turtle()
 
