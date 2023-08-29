@@ -46,8 +46,9 @@ def conoTruncado(radio2,radio1,altura, t): #radio 2 es grande y radio 1 es peque
 
 def hemisferio(radio, t):
     t.penup()
-    t.goto(-300,-radio)
+    t.goto(-300,radio)
     t.pendown()
+    t.setheading(180)
     t.circle(radio,180)
     t.penup()
     t.goto(-300,-radio)
