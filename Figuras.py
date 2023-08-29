@@ -77,10 +77,10 @@ def orPos(t):
 def flecha(CampoElectrico,figura,t):
     t.pensize(3)
     if figura == "Cono" or figura == "Tronco de Cono":
-        t.forward(CampoElectrico*10)
+        t.forward((1/CampoElectrico)*10000000000000000000000000000000000)
         
     else:
-        t.forward(CampoElectrico*50)
+        t.forward((1/CampoElectrico))
     if CampoElectrico > 0:
         t.left(90)
         t.forward(10)
