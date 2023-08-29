@@ -43,7 +43,7 @@ if __name__ == "__main__":
     campos.append(CampoElectrico)
     pr.dot(10,tortugator)
     tortugator.pendown()
-    fig.flecha(Celectrico, clicked.get(),tortugator)
+    fig.flecha(1/Celectrico, clicked.get(),tortugator)
     tortugator.penup()
 
 
