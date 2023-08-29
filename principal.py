@@ -3,16 +3,50 @@ from tkinter import *
 import pruebas as pr
 import Figuras as fig
 import CampoElectrico as campo
-
+import time
 
 
 
 if __name__ == "__main__":
 
-  
-
+  global campos
+  campos= []
+  tortugator = turtle.Turtle()
   root = Tk()
   root.geometry("960x540")
+
+  def contar_clic():
+    global num_clics
+    num_clics += 1
+    return num_clics
+  
+  global num_clics
+  num_clics = 0
+
+  def fxn(x, y ):
+    Celectrico = 0
+    tortugator = turtle.Turtle()
+    tortugator.hideturtle()
+    tortugator.penup()
+    tortugator.goto(x, 0)
+    tortugator.color("blue")
+    if clicked.get() == "Cono":
+        Celectrico = campo.Ccono(float(cargacono), float(string),float(stringaltura),  (tortugator.xcor()+300))
+    elif clicked.get() == "Tronco de Cono":
+        Celectrico = campo.CconoT(float(cargatron), float(radiomayor),float(radiomen),float(altura),  (tortugator.xcor()+300))
+    elif clicked.get() == "Hemisferio":
+        Celectrico = campo.Chemisferio(float(cargahemi), float(radiohem),  (tortugator.xcor()+300))
+    Celectrico = Celectrico/(10**8)
+    tortugator.write("   "+str(contar_clic()))
+    CampoElectrico = str("%.4f" % round(Celectrico, 2))+"x10^8 N/C"
+    campos.append(CampoElectrico)
+    pr.dot(10,tortugator)
+    tortugator.pendown()
+    fig.flecha(Celectrico, tortugator)
+    tortugator.penup()
+
+
+
   
   tituloh = Label(root, text="Bienvenido al CALCULUS EP CAMPO ELECTRICO EN TRES FIGURAS", font=("Arial", 12)).pack()
   # Change the label text
@@ -20,6 +54,8 @@ if __name__ == "__main__":
       label1.config( text = "Se ha elegido la figura: " + clicked.get())
 
       if(clicked.get()=="Cono"):
+        entrycarga.pack()
+        labelcarga = Label(root, text="Por favor ingresar la carga en Couloumbs   \n**Tomar en cuenta que una carga muy pequeña hace que el campo sea 0**").pack()
         entryradio.pack() #mayor
         labelpediradio = Label(root, text="Por favor ingresar el radio   \n**Tomar en Cuenta que cada pixel es un metro**").pack()
         entryaltura.pack() #altura
@@ -30,6 +66,8 @@ if __name__ == "__main__":
 
 
       if(clicked.get() == "Tronco de Cono"):
+        entrycarga.pack()
+        labelcarga = Label(root, text="Por favor ingresar la carga en Couloumbs   \n**Tomar en cuenta que una carga muy pequeña hace que el campo sea 0**").pack()
         entryradio.pack()
         labelpedirmayor = Label(root, text="Por favor ingresar el radio mayor  \n**Tomar en Cuenta que cada pixel es un metro**").pack()
         entryaltura.pack() #menor
@@ -40,31 +78,68 @@ if __name__ == "__main__":
 
 
       if(clicked.get()== "Hemisferio"):
+        entrycarga.pack()
+        labelcarga = Label(root, text="Por favor ingresar la carga en Couloumbs   \n**Tomar en cuenta que una carga muy pequeña hace que el campo sea 0**").pack()
         entryradio.pack()
         labelpediradio = Label(root, text="Por favor ingresar el radio   \n**Tomar en Cuenta que cada pixel es un metro**").pack()
         buttoninput = Button(root, text= "Ingresar",width= 20, command= display_texhemi).pack(pady=20)
       importante = Label(root, text="EL plano cartesiano se abrió en otra pantalla").pack()
+      buttoninput = Button(root, text= "Revisar campo electrico anteriores",width= 20, command= displaynum).pack(pady=20)
+
+    
+
 
 
 
 ####TOdo ESTO SE DEBE DE UTILIZAR PARA CALCULAR LA TORTUGA
   def display_texconot(): #Cono radio y altura}
+   global cargacono
+   cargacono = entrycarga.get()
+   global stringaltura 
    stringaltura = entryaltura.get()
-   string= entryradio.get()
+   global string 
+   string = entryradio.get()
    label2.configure(text=string)
    pr.pantalla()
-   fig.cono(int(radio),int(altura),tortugita)
+   fig.cono(float(string),float(stringaltura),tortugator)
+   wn = turtle.Turtle()
+   wn = turtle.Screen()
+   wn.onclick(fxn)
+   
+
+  def displaynum():
+    for i in range (len(campos)):
+      prince = Label( root , text = "El campo electrico es: " + str(campos[i])).pack()
+     
    
 
   def display_textron(): #Cono toncado radio 1 radio 2 y radio menor
-   string= entryradio.get()
-   label2.configure(text=string)
+   global cargatron
+   cargatron = entrycarga.get()
+   global radiomayor
+   radiomayor = entryradio.get()
+   global radiomen 
+   radiomen= entryradiomenor.get()
+   global altura 
+   altura= entryaltura.get()
+   label2.configure(text=radiomayor)
+   fig.conoTruncado(float(radiomayor),float(radiomen),float(altura),tortugator)
+   tortugator.onclick(fxn)
+   wn = turtle.Turtle()
+   wn = turtle.Screen()
+   wn.onclick(fxn)
 
   def display_texhemi(): #hemisferio solo el radio 
-   string= entryradio.get()
-   label2.configure(text=string)
+   global cargahemi
+   cargahemi = entrycarga.get()
+   global radiohem
+   radiohem = entryradio.get()
+   label2.configure(text=radiohem)
    pr.pantalla()
-   fig.hemisferio(int(string),turtle)
+   fig.hemisferio(float(radiohem),tortugator)
+   wn = turtle.Turtle()
+   wn = turtle.Screen()
+   wn.onclick(fxn)
     
   # Dropdown menu options
   options = [
@@ -95,17 +170,22 @@ if __name__ == "__main__":
   label2=Label(root, text="")
   label2.pack()
 
+  entrycarga = Entry(root, width=40)
+  entrycarga.focus_set()
   entryradio= Entry(root, width= 40) #Mayor
   entryradio.focus_set()
   entryradiomenor= Entry(root, width= 40) #menor
   entryradiomenor.focus_set()
   entryaltura= Entry(root, width= 40) 
   entryaltura.focus_set()
+  entrynum = Entry(root, width=40)
+  entrynum.focus_set()
   #Initialize a Label to display the User Input
 
 
 
   button = Button( root , text = "Generar Plano Cartesiano" , command = lambda: pr.pantalla(), height=1, width=75 ).pack()
+
 
 
       #Create an Entry widget to accept User Input
