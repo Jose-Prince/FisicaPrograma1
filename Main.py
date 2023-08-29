@@ -50,11 +50,11 @@ def fxn(x, y):
     tortugator.goto(x, 0)
     tortugator.color("blue")
     if figura == "cono":
-        Celectrico = campo.Ccono(float(carga), float(radio),float(altura),  tortugator.xcor())
+        Celectrico = campo.Ccono(float(carga), float(radio),float(altura),  (tortugator.xcor()+300))
     elif figura == "conoT":
-        Celectrico = campo.CconoT(float(carga), float(radioG),float(radioP),float(altura),  tortugator.xcor())
+        Celectrico = campo.CconoT(float(carga), float(radioG),float(radioP),float(altura),  (tortugator.xcor()+300))
     elif figura == "hemis":
-        Celectrico = campo.Chemisferio(float(carga), float(radio),  tortugator.xcor())
+        Celectrico = campo.Chemisferio(float(carga), float(radio),  (tortugator.xcor()+300))
     Celectrico = Celectrico/(10**8)
     tortugator.write("   "+str(contar_clic()))
     CampoElectrico = str("%.4f" % round(Celectrico, 2))+"x10^8 N/C"
@@ -63,8 +63,6 @@ def fxn(x, y):
     tortugator.pendown()
     fig.flecha(Celectrico, tortugator)
     tortugator.penup()
-    positionx.append(str(-x))
-    positiony.append(str(0))
     
     
 # root = tk.Tk()

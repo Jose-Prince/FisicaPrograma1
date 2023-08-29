@@ -10,7 +10,7 @@ import CampoElectrico as campo
 if __name__ == "__main__":
 
   
-  tortugita = turtle.Turtle()
+
   root = Tk()
   root.geometry("960x540")
   
@@ -53,17 +53,12 @@ if __name__ == "__main__":
    string= entryradio.get()
    label2.configure(text=string)
    pr.pantalla()
-   fig.cono(int(string),int(stringaltura),tortugita)
+   fig.cono(int(radio),int(altura),tortugita)
    
 
   def display_textron(): #Cono toncado radio 1 radio 2 y radio menor
-   
    string= entryradio.get()
-   radiomen = entryradiomenor.get()
-   altrua = entryaltura.get()
    label2.configure(text=string)
-   pr.pantalla()
-   fig.conoTruncado(int(string),int(radiomen),int(altrua),tortugita)
 
   def display_texhemi(): #hemisferio solo el radio 
    string= entryradio.get()
