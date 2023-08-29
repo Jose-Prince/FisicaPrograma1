@@ -73,4 +73,46 @@ def orPos(t):
     t.goto(-300,0)
     t.setheading(0)
     
+def flecha(CampoElectrico,t):
+    t.pensize(3)
+    t.forward(CampoElectrico*25)
+    if CampoElectrico > 0:
+        t.left(90)
+        t.forward(10)
+        
+        t.right(90+19)
+        t.forward(30)
+        
+        t.penup()
+        t.setheading(0)
+        t.backward(28.4)
+        t.pendown()
+        t.right(90)
+        t.forward(10)
+        
+        t.left(90+19)
+        t.forward(30)
+        t.setheading(0)
+    else:
+        t.setheading(180)
+        t.left(90)
+        t.forward(10)
+        
+        t.right(90+19)
+        t.forward(30)
+        
+        t.penup()
+        t.setheading(180)
+        t.backward(28.4)
+        t.pendown()
+        t.right(90)
+        t.forward(10)
+        
+        t.left(90+19)
+        t.forward(30)
+        t.setheading(0)
+        
+        
+    
+    
     

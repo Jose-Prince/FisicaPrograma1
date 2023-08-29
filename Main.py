@@ -19,6 +19,20 @@ import Figuras as fig
 import CampoElectrico as campo
 
 tortugita = turtle.Turtle()
+figura = ""
+radio = 0
+radioG = 0
+radioP = 0
+altura = 0
+carga = 0
+campos = []
+
+def contar_clic():
+    global num_clics
+    num_clics += 1
+    return num_clics
+
+num_clics = 0
 
 def do_stuff():
     tortugita.goto(-600,-600)
@@ -29,13 +43,29 @@ def press():
 
 
 def fxn(x, y):
-  turtle.penup()
-  turtle.goto(x, 0)
-  turtle.color("blue")
-  turtle.write("        "+str(300+x)+","+str(0))
-  positionx.append(str(-x))
-  positiony.append(str(0))
-  pr.dot(20,turtle)
+    Celectrico = 0
+    tortugator = turtle.Turtle()
+    tortugator.hideturtle()
+    tortugator.penup()
+    tortugator.goto(x, 0)
+    tortugator.color("blue")
+    if figura == "cono":
+        Celectrico = campo.Ccono(float(carga), float(radio),float(altura),  tortugator.xcor())
+    elif figura == "conoT":
+        Celectrico = campo.CconoT(float(carga), float(radioG),float(radioP),float(altura),  tortugator.xcor())
+    elif figura == "hemis":
+        Celectrico = campo.Chemisferio(float(carga), float(radio),  tortugator.xcor())
+    Celectrico = Celectrico/(10**8)
+    tortugator.write("   "+str(contar_clic()))
+    CampoElectrico = str("%.4f" % round(Celectrico, 2))+"x10^8 N/C"
+    campos.append(CampoElectrico)
+    pr.dot(10,tortugator)
+    tortugator.pendown()
+    fig.flecha(Celectrico, tortugator)
+    tortugator.penup()
+    positionx.append(str(-x))
+    positiony.append(str(0))
+    
     
 # root = tk.Tk()
 # canvas = tk.Canvas(root)
@@ -59,30 +89,46 @@ while ejecucion:
     Opcion = input("Opción: ")
     
     if Opcion == "1":
+        figura = "cono"
         radio = input("Radio: ")
         altura = input("Altura: ")
         pr.pantalla()
-        fig.cono(int(radio),int(altura),tortugita)
-        
-    if Opcion == "2":
-        radioG = input("Radio Mayor: ")
-        radioP = input("Radio Menor: ")
-        altura = input("Altura: ")
-        pr.pantalla()
-        fig.conoTruncado(int(radioG),int(radioP),int(altura),tortugita)
-    
-    if Opcion == "3":
-        radio = input("Radio: ")
-        pr.pantalla()
-        fig.hemisferio(int(radio),tortugita)
-
+        fig.cono(float(radio),float(altura),tortugita)
+        tortugita.hideturtle()
+        carga = float(input("Indique el valor de la carga (C): "))
         print("Vamos a poner la carga por favor seleccionar la posicion de la carga")
         wn = turtle.Turtle()
         wn = turtle.Screen()
         wn.onclick(fxn)
-        carga = int(input("Por favor ingresar la carga: **Tomar en Cuenta que ya esta en µ**"))
-        Celectrico = campo.Chemisferio(int(carga), int(radio),  float(positionx[0]))
-        wn.forward(100)
+        input()
+        
+    if Opcion == "2":
+        figura = "conoT"
+        radioG = input("Radio Mayor: ")
+        radioP = input("Radio Menor: ")
+        altura = input("Altura: ")
+        pr.pantalla()
+        fig.conoTruncado(float(radioG),float(radioP),float(altura),tortugita)
+        tortugita.hideturtle()
+        carga = float(input("Indique el valor de la carga (C): "))
+        print("Vamos a poner la carga por favor seleccionar la posicion de la carga")
+        wn = turtle.Turtle()
+        wn = turtle.Screen()
+        wn.onclick(fxn)
+        input()
+    
+    if Opcion == "3":
+        figura = "hemis"
+        radio = input("Radio: ")
+        pr.pantalla()
+        fig.hemisferio(float(radio),tortugita)
+        tortugita.hideturtle()
+        carga = float(input("Indique el valor de la carga (C): "))
+        print("Vamos a poner la carga por favor seleccionar la posicion de la carga")
+        wn = turtle.Turtle()
+        wn = turtle.Screen()
+        wn.onclick(fxn)
+        input()
     
     
 
