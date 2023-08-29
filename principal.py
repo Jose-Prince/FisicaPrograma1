@@ -29,6 +29,7 @@ if __name__ == "__main__":
     tortugator.hideturtle()
     tortugator.penup()
     tortugator.goto(x, 0)
+    tortugator.write( "Coords: (" + str(x+300) +", 0)" )
     tortugator.color("blue")
     if clicked.get() == "Cono":
         Celectrico = campo.Ccono(float(cargacono), float(string),float(stringaltura),  (tortugator.xcor()+300))
@@ -84,7 +85,7 @@ if __name__ == "__main__":
         labelpediradio = Label(root, text="Por favor ingresar el radio   \n**Tomar en Cuenta que cada pixel es un metro**").pack()
         buttoninput = Button(root, text= "Ingresar",width= 20, command= display_texhemi).pack(pady=20)
       importante = Label(root, text="EL plano cartesiano se abrió en otra pantalla").pack()
-      buttoninput = Button(root, text= "Revisar campo electrico anteriores",width= 20, command= displaynum).pack(pady=20)
+      buttoninput = Button(root, text= "Revisar campo electrico anteriores",width= 50, command= displaynum).pack(pady=20)
 
     
 
