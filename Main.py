@@ -55,13 +55,13 @@ def fxn(x, y):
         Celectrico = campo.CconoT(float(carga), float(radioG),float(radioP),float(altura),  (tortugator.xcor()+300))
     elif figura == "hemis":
         Celectrico = campo.Chemisferio(float(carga), float(radio),  (tortugator.xcor()+300))
-    Celectrico = Celectrico/(10**8)
+    Celectrico = Celectrico/(10**10)
     tortugator.write("   "+str(contar_clic()))
-    CampoElectrico = str("%.4f" % round(Celectrico, 2))+"x10^8 N/C"
+    CampoElectrico = str("%.2f" % round(Celectrico, 2))+"x10^10 N/C"
     campos.append(CampoElectrico)
     pr.dot(10,tortugator)
     tortugator.pendown()
-    fig.flecha(Celectrico, tortugator)
+    fig.flecha(Celectrico, figura,tortugator)
     tortugator.penup()
     
     
